@@ -51,7 +51,7 @@ jobs:
     - name: Build documentation with Sphinx
       shell: bash -l {0}
       run: |
-        conda install sphinx
+        conda install sphinx sphinx_rtd_theme
         python -m pip install --no-deps -e .
         python setup.py build_sphinx
     - name: Test README with pytest
