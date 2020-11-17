@@ -85,9 +85,9 @@ def srtm_ellip_tiles_names(left, bottom, right, top,
             fname = tile_name_template.format(**locals())
 
             if abs_ilat >= 0:
-                yield(f"{subdir}/{north_subdir}/{fname}")
+                yield("{subdir}/{north_subdir}/{fname}".format(**locals()))
             else:
-                yield(f"{subdir}/{fname}")
+                yield("{subdir}/{fname}".format(**locals()))
 
 
 DATASOURCE_MAKEFILE = pkgutil.get_data('elevation', 'datasource.mk').decode('utf-8')
