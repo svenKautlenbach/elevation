@@ -70,7 +70,37 @@ def srtm3_tiles_names(left, bottom, right, top, tile_template='srtm_{ilon:02d}_{
             yield tile_template.format(**locals())
 
 
+def srtm_ellip_tiles_names(left, bottom, right, top,
+                           tile_name_template='{slat}{slon}_wgs84.tif'):
+    ileft, itop = srtm1_tile_ilonlat(left, top)
+    iright, ibottom = srtm1_tile_ilonlat(right, bottom)
+
+    for ilon in range(ileft, iright + 1):
+        slon = '%s%03d' % ('E' if ilon >= 0 else 'W', abs(ilon))
+        for ilat in range(ibottom, itop + 1):
+            abs_ilat = abs(ilat)
+            slat = '%s%02d' % ('N' if abs_ilat >= 0 else 'S', abs_ilat)
+            subdir = 'North' if abs_ilat >= 0 else 'South'
+            north_subdir = 'North_30_60' if ilat >= 30 else 'North_0_29'
+            fname = tile_name_template.format(**locals())
+
+            if abs_ilat >= 0:
+                yield(f"{subdir}/{north_subdir}/{fname}")
+            else:
+                yield(f"{subdir}/{fname}")
+
+
 DATASOURCE_MAKEFILE = pkgutil.get_data('elevation', 'datasource.mk').decode('utf-8')
+
+SRTM1_ELLIP_SPEC = {
+    'folders': ('spool', 'cache'),
+    'file_templates': {'Makefile': DATASOURCE_MAKEFILE},
+    'datasource_url': 'https://opentopography.s3.sdsc.edu/raster/SRTM_GL1_Ellip/SRTM_GL1_Ellip_srtm',
+    'tile_ext': '.tif',
+    'compressed_pre_ext': '',
+    'compressed_ext': '',
+    'tile_names': srtm_ellip_tiles_names,
+}
 
 SRTM1_SPEC = {
     'folders': ('spool', 'cache'),
@@ -95,6 +125,7 @@ SRTM3_SPEC = {
 PRODUCTS_SPECS = collections.OrderedDict([
     ('SRTM1', SRTM1_SPEC),
     ('SRTM3', SRTM3_SPEC),
+    ('SRTM1_ELLIP', SRTM1_ELLIP_SPEC),
 ])
 
 PRODUCTS = list(PRODUCTS_SPECS)
