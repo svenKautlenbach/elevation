@@ -78,13 +78,12 @@ def srtm_ellip_tiles_names(left, bottom, right, top,
     for ilon in range(ileft, iright + 1):
         slon = '%s%03d' % ('E' if ilon >= 0 else 'W', abs(ilon))
         for ilat in range(ibottom, itop + 1):
-            abs_ilat = abs(ilat)
-            slat = '%s%02d' % ('N' if abs_ilat >= 0 else 'S', abs_ilat)
-            subdir = 'North' if abs_ilat >= 0 else 'South'
+            slat = '%s%02d' % ('N' if ilat >= 0 else 'S', abs(ilat))
+            subdir = 'North' if ilat >= 0 else 'South'
             north_subdir = 'North_30_60' if ilat >= 30 else 'North_0_29'
             fname = tile_name_template.format(**locals())
 
-            if abs_ilat >= 0:
+            if ilat >= 0:
                 yield("{subdir}/{north_subdir}/{fname}".format(**locals()))
             else:
                 yield("{subdir}/{fname}".format(**locals()))

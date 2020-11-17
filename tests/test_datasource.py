@@ -33,6 +33,16 @@ def test_srtm3_tiles_names():
     assert len(list(datasource.srtm3_tiles_names(9.9, 39.1, 15.1, 45.1))) == 9
 
 
+def test_srtm_ellip_tiles_names():
+    # Check the various subdirs in srtm_ellip
+    ds1 = ['North/North_30_60/N44E010_wgs84.tif']
+    ds2 = ['North/North_0_29/N07W074_wgs84.tif']
+    ds3 = ['South/S20E015_wgs84.tif']
+    assert list(datasource.srtm_ellip_tiles_names(10.1, 44.9, 10.1, 44.9)) == ds1
+    assert list(datasource.srtm_ellip_tiles_names(-73.99, 7.056, -73.90, 7.660)) == ds2
+    assert list(datasource.srtm_ellip_tiles_names(15.931, -19.194, 15.329, -19.961)) == ds3
+
+
 def test_ensure_tiles(mocker):
     mocker.patch('subprocess.check_call')
     cmd = datasource.ensure_tiles('/tmp', ['a', 'b'])
