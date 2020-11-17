@@ -1,0 +1,8 @@
+channels:
+  - defaults
+dependencies:
+  - appdirs
+  - click
+  - fastners
+  - future
+  - gdal
