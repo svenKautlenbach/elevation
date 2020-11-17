@@ -3,6 +3,9 @@ channels:
 dependencies:
   - appdirs
   - click
-  - fastners
   - future
-  - gdal
+  - fiona
+  - rasterio
+  - pip
+  - pip:
+    - fastners
