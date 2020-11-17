@@ -6,6 +6,5 @@ dependencies:
   - future
   - fiona
   - rasterio
-  - pip
   - pip:
     - fastners
