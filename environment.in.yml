@@ -1,10 +1,12 @@
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - appdirs
   - click
-  - future
   - fiona
+  - pip
+  - make
   - rasterio
   - pip:
-    - fastners
+    - fasteners
