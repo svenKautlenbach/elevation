@@ -5,8 +5,8 @@ dependencies:
   - appdirs
   - click
   - fiona
-  - pip
   - make
+  - pip
   - rasterio
   - pip:
     - fasteners

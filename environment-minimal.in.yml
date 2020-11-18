@@ -4,7 +4,8 @@ channels:
 dependencies:
   - appdirs
   - click
-  - pip
+  - gdal
   - make
+  - pip
   - pip:
     - fasteners
