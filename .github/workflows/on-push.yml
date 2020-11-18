@@ -33,7 +33,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install pytest pytest-cov pytest-mock
-        python -m pip install --no-deps -e .
+        pip install --no-deps -e .
         pytest -v --cov=. --cov-report=xml --cov-branch .
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
@@ -52,7 +52,7 @@ jobs:
       shell: bash -l {0}
       run: |
         conda install sphinx sphinx_rtd_theme
-        python -m pip install --no-deps -e .
+        pip install --no-deps -e .
         python setup.py build_sphinx
     - name: Test README with pytest
       shell: bash -l {0}
@@ -86,3 +86,23 @@ jobs:
       run: |
         $CONDA/bin/conda install isort
         $CONDA/bin/isort .
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check MANIFEST
+      run: |
+        $CONDA/bin/conda install check-manifest
+        $CONDA/bin/check-manifest .
+    - name: Build distributions
+      run: |
+        $CONDA/bin/conda install pip setuptools wheel
+        $CONDA/bin/python setup.py sdist bdist_wheel
+    - name: Publish a Python distribution to PyPI
+      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
