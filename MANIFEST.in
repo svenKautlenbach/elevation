@@ -1,11 +1,11 @@
+include *.in
+include *.rst
+include *.txt
+include *.yml
 include LICENSE
 include tox.ini
-include *.in
-include *.txt
-include *.rst
-include *.yml
 recursive-include docs *.py
 recursive-include docs *.rst
-recursive-include tests *.yml
-recursive-include tests *.py
 recursive-include elevation *.mk
+recursive-include tests *.py
+recursive-include tests *.yml

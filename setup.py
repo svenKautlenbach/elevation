@@ -39,6 +39,7 @@ setup(
     description="Python script to download global terrain digital elevation models, "
     "SRTM 30m DEM and SRTM 90m DEM.",
     long_description=read('README.rst'),
+    long_description_content_type="text/x-rst",
     packages=find_packages(),
     include_package_data=True,
     install_requires=['appdirs', 'click<7.0', 'fasteners'],
