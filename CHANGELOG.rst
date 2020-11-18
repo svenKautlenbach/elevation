@@ -1,5 +1,5 @@
 
-1.0.7 (unreleased)
+1.1.0 (2020-11-18)
 ------------------
 
 - Drop Python 2 support. Sorry it is not possible to test it anymore.
