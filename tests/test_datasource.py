@@ -86,6 +86,7 @@ def test_clip(mocker, tmpdir):
 
     class UUID:
         hex = 'asd'
+
     uuid_mock = mocker.Mock()
     uuid_mock.return_value = UUID
     mocker.patch('uuid.uuid4', uuid_mock)

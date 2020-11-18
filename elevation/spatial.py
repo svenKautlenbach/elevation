@@ -19,11 +19,13 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 try:
     import rasterio
+
     SUPPORT_RASTER_DATA = True
 except ImportError:
     SUPPORT_RASTER_DATA = False
 try:
     import fiona
+
     SUPPORT_VECTOR_DATA = True
 except ImportError:
     SUPPORT_VECTOR_DATA = False

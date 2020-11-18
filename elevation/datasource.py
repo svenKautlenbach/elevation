@@ -29,8 +29,17 @@ from . import util
 
 # declare public all API functions and constants
 __all__ = [
-    'info', 'seed', 'clip', 'clean', 'distclean',
-    'CACHE_DIR', 'DEFAULT_PRODUCT', 'PRODUCTS', 'DEFAULT_OUTPUT', 'MARGIN', 'TOOLS',
+    'info',
+    'seed',
+    'clip',
+    'clean',
+    'distclean',
+    'CACHE_DIR',
+    'DEFAULT_PRODUCT',
+    'PRODUCTS',
+    'DEFAULT_OUTPUT',
+    'MARGIN',
+    'TOOLS',
 ]
 
 CACHE_DIR = appdirs.user_cache_dir('elevation', 'bopen')
@@ -70,8 +79,7 @@ def srtm3_tiles_names(left, bottom, right, top, tile_template='srtm_{ilon:02d}_{
             yield tile_template.format(**locals())
 
 
-def srtm_ellip_tiles_names(left, bottom, right, top,
-                           tile_name_template='{slat}{slon}_wgs84.tif'):
+def srtm_ellip_tiles_names(left, bottom, right, top, tile_name_template='{slat}{slon}_wgs84.tif'):
     ileft, itop = srtm1_tile_ilonlat(left, top)
     iright, ibottom = srtm1_tile_ilonlat(right, bottom)
 
@@ -84,9 +92,9 @@ def srtm_ellip_tiles_names(left, bottom, right, top,
             fname = tile_name_template.format(**locals())
 
             if ilat >= 0:
-                yield("{subdir}/{north_subdir}/{fname}".format(**locals()))
+                yield ("{subdir}/{north_subdir}/{fname}".format(**locals()))
             else:
-                yield("{subdir}/{fname}".format(**locals()))
+                yield ("{subdir}/{fname}".format(**locals()))
 
 
 DATASOURCE_MAKEFILE = pkgutil.get_data('elevation', 'datasource.mk').decode('utf-8')
@@ -121,11 +129,9 @@ SRTM3_SPEC = {
     'tile_names': srtm3_tiles_names,
 }
 
-PRODUCTS_SPECS = collections.OrderedDict([
-    ('SRTM1', SRTM1_SPEC),
-    ('SRTM3', SRTM3_SPEC),
-    ('SRTM1_ELLIP', SRTM1_ELLIP_SPEC),
-])
+PRODUCTS_SPECS = collections.OrderedDict(
+    [('SRTM1', SRTM1_SPEC), ('SRTM3', SRTM3_SPEC), ('SRTM1_ELLIP', SRTM1_ELLIP_SPEC),]
+)
 
 PRODUCTS = list(PRODUCTS_SPECS)
 DEFAULT_PRODUCT = PRODUCTS[0]
@@ -176,8 +182,10 @@ def seed(cache_dir=CACHE_DIR, product=DEFAULT_PRODUCT, bounds=None, max_download
     ensure_tiles_names = list(spec['tile_names'](*bounds))
     # FIXME: emergency hack to enforce the no-bulk-download policy
     if len(ensure_tiles_names) > max_download_tiles:
-        raise RuntimeError("Too many tiles: %d. Please consult the providers' websites "
-                           "for how to bulk download tiles." % len(ensure_tiles_names))
+        raise RuntimeError(
+            "Too many tiles: %d. Please consult the providers' websites "
+            "for how to bulk download tiles." % len(ensure_tiles_names)
+        )
 
     with util.lock_tiles(datasource_root, ensure_tiles_names):
         ensure_tiles(datasource_root, ensure_tiles_names, **kwargs)

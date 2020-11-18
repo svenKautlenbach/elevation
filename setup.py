@@ -37,19 +37,12 @@ setup(
     url='http://elevation.bopen.eu',
     download_url='https://github.com/bopen/elevation/archive/%s.tar.gz' % version,
     description="Python script to download global terrain digital elevation models, "
-                "SRTM 30m DEM and SRTM 90m DEM.",
+    "SRTM 30m DEM and SRTM 90m DEM.",
     long_description=read('README.rst'),
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-        'appdirs',
-        'click<7.0',
-        'fasteners',
-        'future',
-    ],
-    extras_require={
-        'reference': ['fiona', 'rasterio'],
-    },
+    install_requires=['appdirs', 'click<7.0', 'fasteners', 'future',],
+    extras_require={'reference': ['fiona', 'rasterio'],},
     zip_safe=True,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -68,7 +61,5 @@ setup(
         'Topic :: Scientific/Engineering :: GIS',
     ],
     keywords='script download SRTM DEM DTM global digital elevation terrain model',
-    entry_points={
-        'console_scripts': ['eio=elevation.cli:eio'],
-    },
+    entry_points={'console_scripts': ['eio=elevation.cli:eio'],},
 )
