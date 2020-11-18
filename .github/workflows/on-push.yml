@@ -94,7 +94,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Check MANIFEST
       run: |
-        $CONDA/bin/conda install check-manifest
+        $CONDA/bin/conda install -c conda-forge check-manifest
         $CONDA/bin/check-manifest .
     - name: Build distributions
       run: |
