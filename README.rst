@@ -37,6 +37,9 @@ The best way to install GDAL command line tools varies across operating systems
 and distributions, please refer to the
 `GDAL install documentation <https://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries>`_.
 
+Note that starting from *elevation* v1.1 only Python 3 is officially supported.
+To get the last version sporting Python 2 support please use ``pip install elevation=1.0.6``.
+
 
 Command line usage
 ------------------
@@ -74,6 +77,7 @@ please refer to the upstream providers' websites to learn the preferred procedur
 To clean up stale temporary files and fix the cache in the event of a server error use::
 
     $ eio clean
+
 
 Command line reference
 ----------------------
@@ -138,12 +142,9 @@ Documentation http://elevation.bopen.eu
 Support       https://stackoverflow.com/search?q=python+elevation
 Development   https://github.com/bopen/elevation
 Download      https://pypi.org/project/elevation
-Code quality  .. image:: https://api.travis-ci.org/bopen/elevation.svg?branch=master
-                :target: https://travis-ci.org/bopen/elevation/branches
-                :alt: Build Status on Travis CI
-              .. image:: https://coveralls.io/repos/bopen/elevation/badge.svg?branch=master&service=github
-                :target: https://coveralls.io/github/bopen/elevation
-                :alt: Coverage Status on Coveralls
+Code quality  .. image:: https://codecov.io/gh/bopen/elevation/branch/master/graph/badge.svg
+                :target: https://codecov.io/gh/bopen/elevation
+                :alt: Coverage status on Codecov
 ============= =========================================================
 
 
