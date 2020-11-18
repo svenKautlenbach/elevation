@@ -15,11 +15,10 @@
 # import sys
 # import os
 import pkg_resources
-import sphinx_rtd_theme
-
 # "monkey patch" sphinx to omit any warnings of 'nonlocal image URI found'.
 # Now we can `sphinx-build -W` to turn "warnings to errors" in test builds.
 import sphinx.environment
+import sphinx_rtd_theme
 from docutils.utils import get_source_line
 
 

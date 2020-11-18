@@ -7,6 +7,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import subprocess
+
 import pytest
 
 from elevation import datasource
