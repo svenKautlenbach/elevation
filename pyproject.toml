@@ -11,3 +11,4 @@ norecursedirs = [
 
 [tool.coverage.run]
 branch = true
+omit = ["setup.py"]
