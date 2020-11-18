@@ -2,7 +2,8 @@
 1.0.7 (unreleased)
 ------------------
 
-- Drop support for pythpn 3.4 and 3.5 add support for 3.7 and 3.8.
+- Drop Python 2 support. Sorry it is not possible to test it anymore.
+- Drop support for python 3.4 and 3.5 add support for 3.7 and 3.8.
 - Add support for SRTM1_ELLIP dataset, thanks to `kxtells <https://github.com/kxtells>`_.
   See `#42 <https://github.com/bopen/elevation/pull/42>`_.
 
