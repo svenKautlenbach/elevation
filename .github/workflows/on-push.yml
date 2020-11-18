@@ -87,7 +87,7 @@ jobs:
         $CONDA/bin/conda install isort
         $CONDA/bin/isort .
 
-  deploy:
+  distribution:
     runs-on: ubuntu-latest
 
     steps:
