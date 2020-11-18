@@ -35,7 +35,7 @@ jobs:
       run: |
         conda install pytest pytest-cov pytest-mock
         pip install --no-deps -e .
-        pytest -v --cov=. --cov-report=xml --cov-branch .
+        pytest -v --cov=. --cov-report=xml .
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
 
@@ -82,7 +82,7 @@ jobs:
     - name: Check code style with black
       run: |
         $CONDA/bin/conda install black
-        $CONDA/bin/black -S --line-length 105 --check .
+        $CONDA/bin/black --check .
     - name: Check code style with isort
       run: |
         $CONDA/bin/conda install isort

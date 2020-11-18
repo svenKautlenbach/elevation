@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 105
+skip-string-normalization = true
+
+[tool.pytest.ini_options]
+norecursedirs = [
+    "build",
+    "docs",
+    ".tox",
+]
+
+[tool.coverage.run]
+branch = true
