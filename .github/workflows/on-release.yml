@@ -1,0 +1,23 @@
+name: on-release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: conda-incubator/setup-miniconda@v2
+    - name: Build distributions
+      run: |
+        conda install setuptools wheel
+        python setup.py sdist bdist_wheel
+    - name: Publish a Python distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.pypi_password }}
