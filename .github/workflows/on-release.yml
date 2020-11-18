@@ -14,7 +14,7 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
     - name: Build distributions
       run: |
-        conda install setuptools wheel
+        conda install pip setuptools wheel
         python setup.py sdist bdist_wheel
     - name: Publish a Python distribution to PyPI
       uses: pypa/gh-action-pypi-publish@master
