@@ -16,7 +16,6 @@ jobs:
             python: 3.8
           - os: ubuntu
             python: 3.8
-            eccodes: 1
           - os: ubuntu
             python: 3.8
             extras: -minimal
